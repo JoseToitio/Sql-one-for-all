@@ -2,11 +2,13 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
+USE SpotifyClone;
+
 CREATE TABLE SpotifyClone.planos (
   id_plano INTEGER PRIMARY KEY AUTO_INCREMENT,
   name_plano CHAR(50) NOT NULL,
   valor DOUBLE NOT NULL
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.user (
   id_user INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -15,12 +17,12 @@ CREATE TABLE SpotifyClone.user (
   FOREIGN KEY (id_user_follow) REFERENCES planos(id_plano),
   idade INT NOT NULL,
   signature_date DATA NOT NULL,
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.artist (
   id_artist INTEGER PRIMARY KEY AUTO_INCREMENT,
   artist_name VARCHAR(45) NOT NULL
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.albums (
     id_album INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -28,7 +30,7 @@ CREATE TABLE SpotifyClone.albums (
     id_artista INTEGER NOT NULL,
     FOREIGN KEY (id_artista) REFERENCES artist(id_artist)
     ano_lancamento YEAR NOT NULL,
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.follow_artists (
   id_user INTEGER NOT NULL,
@@ -36,7 +38,7 @@ CREATE TABLE SpotifyClone.follow_artists (
   PRIMARY KEY (id_user, id_artist),
   FOREIGN KEY (id_user) REFERENCES user(id_user),
   FOREIGN KEY (id_artist) REFERENCES artist(id_artist)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.cancoes (
   id_cancao INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -46,7 +48,7 @@ CREATE TABLE SpotifyClone.cancoes (
   id_artist INTEGER NOT NULL,
   FOREIGN KEY (id_artist) REFERENCES artist(id_artist),
   cancao_time INT NOT NULL DEFAULT 0
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.history (
   id_user INTEGER NOT NULL,
@@ -55,7 +57,7 @@ CREATE TABLE SpotifyClone.history (
   FOREIGN KEY (id_user) REFERENCES user(id_user),
   FOREIGN KEY (id_cancao) REFERENCES cancoes(id_cancao),
   history_date TIMESTAMP NOT NULL,
-) ENGINE = InnoDB;
+);
 
 INSERT INTO SpotifyClone.planos (name_plano, valor) 
 VALUES
