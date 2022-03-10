@@ -1,7 +1,7 @@
 SELECT
-MIN(planos.valor) AS 'faturamento_minimo',
-ROUND(MAX(planos.valor), 2) AS 'faturamento_maximo',
-ROUND(AVG(planos.valor), 2) AS 'faturamento_medio',
-ROUND(SUM(planos.valor), 2) AS 'faturamento_total'
+CAST(MIN(planos.valor)) AS 'faturamento_minimo',
+CAST(MAX(planos.valor) AS DECIMAL(5,2)) AS 'faturamento_maximo',
+CAST(AVG(planos.valor), AS DECIMAL(5,2)) AS 'faturamento_medio',
+CAST(SUM(planos.valor), AS DECIMAL(5,2)) AS 'faturamento_total'
 FROM SpotifyClone.planos
 JOIN SpotifyClone.user ON planos.id_plano = user.plano_id;
