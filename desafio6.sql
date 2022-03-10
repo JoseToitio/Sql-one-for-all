@@ -1,5 +1,5 @@
 SELECT
-MIN(planos.plan_price) AS 'faturamento_minimo',
+MIN(planos.valor) AS 'faturamento_minimo',
 ROUND(MAX(planos.valor), 2) AS 'faturamento_maximo',
 ROUND(AVG(planos.valor), 2) AS 'faturamento_medio',
 ROUND(SUM(planos.valor), 2) AS 'faturamento_total'
