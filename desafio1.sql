@@ -16,7 +16,7 @@ CREATE TABLE SpotifyClone.albums(
     album_name VARCHAR(50) NOT NULL,
     id_artista INT NOT NULL,
     FOREIGN KEY (id_artista) REFERENCES artist(id_artist)
-    ano_lancamento YEAR NOT NULL,
+    ano_lancamento YEAR NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.user(
