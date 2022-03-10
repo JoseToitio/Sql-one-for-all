@@ -1,10 +1,10 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
-
+USE SpotifyClone;
 CREATE TABLE SpotifyClone.planos (
   id_plano INTEGER PRIMARY KEY AUTO_INCREMENT,
-  name_plano CHAR(13) NOT NULL,
+  name_plano CHAR(50) NOT NULL,
   valor DOUBLE NOT NULL
 ) engine = InnoDB;
 
