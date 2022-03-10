@@ -28,8 +28,9 @@ CREATE TABLE SpotifyClone.user
 (
     id_user INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(45) NOT NULL,
-    id_user_follow INT NOT NULL,
-    FOREIGN KEY (id_user_follow) REFERENCES planos(id_plano),
+    plano_id INT NOT NULL,
+    FOREIGN KEY (plano_id) REFERENCES planos(id_plano),
+    PRIMARY KEY (id_user_follow)
     idade INT NOT NULL,
     signature_date DATETIME DEFAULT NOW()
 ) engine = InnoDB;
@@ -80,7 +81,7 @@ VALUES
     ("Tyler Isle"),
     ("Fog");
 
-INSERT INTO SpotifyClone.user (username, idade, id_user_follow, signature_date)
+INSERT INTO SpotifyClone.user (username, idade, plano_id, signature_date)
 VALUES
     ("Thati", 23, 1, "2019-10-20"),
     ("Cintia", 35, 2, "2017-12-30"),
