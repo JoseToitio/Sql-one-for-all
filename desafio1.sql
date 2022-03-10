@@ -16,7 +16,7 @@ CREATE TABLE SpotifyClone.user (
   id_user_follow INTEGER NOT NULL,
   FOREIGN KEY (id_user_follow) REFERENCES planos(id_plano),
   idade INT NOT NULL,
-  signature_date DATA NOT NULL,
+  signature_date DATETIME DEFAULT NOW(),
 );
 
 CREATE TABLE SpotifyClone.artist (
