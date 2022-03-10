@@ -30,7 +30,6 @@ CREATE TABLE SpotifyClone.user
     username VARCHAR(45) NOT NULL,
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id) REFERENCES planos(id_plano),
-    PRIMARY KEY (id_user_follow),
     idade INT NOT NULL,
     signature_date DATETIME DEFAULT NOW()
 ) engine = InnoDB;
@@ -48,20 +47,20 @@ CREATE TABLE SpotifyClone.cancoes
 
 CREATE TABLE SpotifyClone.history
 (
-    id_user INT NOT NULL,
+    id_user_follow INT NOT NULL,
     id_cancao INT NOT NULL,
-    PRIMARY KEY (id_user, id_cancao),
-    FOREIGN KEY (id_user) REFERENCES user(id_user),
+    PRIMARY KEY (id_user_follow, id_cancao),
+    FOREIGN KEY (id_user_follow) REFERENCES user(id_user),
     FOREIGN KEY (id_cancao) REFERENCES cancoes(id_cancao),
     history_date TIMESTAMP NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.follow_artists
 (
-    id_user INT NOT NULL,
+    id_user_follow INT NOT NULL,
     id_artist INT NOT NULL,
-    PRIMARY KEY (id_user, id_artist),
-    FOREIGN KEY (id_user) REFERENCES user(id_user),
+    PRIMARY KEY (id_user_follow, id_artist),
+    FOREIGN KEY (id_user_follow) REFERENCES user(id_user),
     FOREIGN KEY (id_artist) REFERENCES artist(id_artist)
 ) engine = InnoDB;
 
@@ -150,7 +149,7 @@ VALUES
     ("Young And Father", 197, 4, 6 ),
     ("Soul For Us", 200, 1, 1 );
 
-INSERT INTO SpotifyClone.history(id_user, id_cancao, history_date)
+INSERT INTO SpotifyClone.history(id_user_follow, id_cancao, history_date)
 VALUES
     (1, 16, '2020-02-28 10:45:55'),
     (1, 32, '2020-05-02 05:30:35'),
@@ -191,7 +190,7 @@ VALUES
     (10, 24, '2017-07-27 05:24:49'),
     (10, 13, '2017-12-25 01:03:57');
 
-INSERT INTO SpotifyClone.follow_artists(id_user, id_artist)
+INSERT INTO SpotifyClone.follow_artists(id_user_follow, id_artist)
 VALUES
     (1, 1),
     (1, 4),
